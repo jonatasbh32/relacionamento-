@@ -1,0 +1,15 @@
+<h3>Nova Empresa</h3>
+<br/>
+
+<?php 
+$form = $this->form;
+
+$form->setAttribute('action', $this->url('livraria-admin', array('controller'=>'empresas', 'action'=>'new')));
+
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('nome'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>

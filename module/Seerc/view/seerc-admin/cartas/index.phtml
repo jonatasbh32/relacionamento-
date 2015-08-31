@@ -1,0 +1,38 @@
+<h1>Cartas</h1>
+<br/>
+
+<p>
+	<a href="<?php echo $this->url('livraria-admin', array('controller'=>'cartas', 'action' => 'new')) ?>"><button class="btn btn-primary"><span  class="glyphicon glyphicon-plus"></span> Novo</button></a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>Cpf</th>
+		<th>Cidade</th>
+		<th>Data</th>
+		<th>Ação</th>
+	</tr>
+
+	<?php foreach($this->data as $entity): ?>
+	<tr>
+		<td><?php echo $entity->getId(); ?> </td>
+		<td><?php echo $entity->getNome(); ?> </td>
+		<td><?php echo $entity->getCpf(); ?> </td>
+		<td><?php echo $entity->getCidade(); ?> </td>
+		<td><?php echo $entity->getData(); ?> </td>
+
+		<td>
+			<a href="<?php echo $this->url('livraria-admin-interna', array('controller'=>'cartas', 'action' => 'edit', 'id' =>$entity->getId())); ?>"><button class="btn btn-default"><span  class="glyphicon glyphicon-pencil"></span></button></a>
+
+			<a href="<?php echo $this->url('livraria-admin-interna', array('controller'=>'cartas', 'action' => 'delete', 'id' =>$entity->getId())); ?>"><button class="btn btn-default"><span  class="glyphicon glyphicon-trash"></span></button></a>
+		</td>
+	</tr>	
+
+	<?php endforeach;?>
+
+</table>
+
+
+<?php echo $this->paginationControl($this->data,'Sliding','paginator'); ?>
